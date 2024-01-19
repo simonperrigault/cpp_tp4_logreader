@@ -10,6 +10,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <vector>
 //------------------------------------------------------ Include personnel
 #include "../int/Analyse.h"
 #include <unordered_map>
@@ -79,3 +80,32 @@ Analyse::~Analyse ( )
 } //----- Fin de ~Analyse
 //------------------------------------------------------------------ PRIVE
 //----------------------------------------------------- Méthodes protégées
+
+
+void const Analyse::Generation_dot() const
+{
+  string fichier;
+  fichier += "digraph {";
+  vector <string> noeud_cree;
+  for (data::iterator it1= data.begin() ; it1 != data.end(); it1++)
+  {
+    if (data->first not in  noeud_cree)
+    {
+      fichier += data->first;
+      noeud_cree.push_back(data->first);
+    }
+    
+    for (data::iterator it2= it1->second.at(0).begin() ; it2 != it1->second.at(0).end(); it2++)
+    {
+      if (data->first not in  noeud_cree)
+      {
+        fichier += data->first;
+        noeud_cree.push_back(data->first);
+      }
+    }
+    
+  }
+  
+  fichier += "}";
+
+}

@@ -21,6 +21,7 @@ class Analyse
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
+  void const Generation_dot() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
