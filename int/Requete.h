@@ -1,82 +1,57 @@
 /*************************************************************************
-                          Analyse  -  description
+                          Requete  -  description
                           -------------------
     début                : DATE$
     copyright            : (C) YEAR$ par AUTHOR$
     e-mail               : EMAIL$
 *************************************************************************/
-//---------- Interface de la classe <Analyse> (fichier Analyse.h) ----------------
-#if ! defined ( ANALYSE_H )
-#define ANALYSE_H
-
-#include "Requete.h"
-#include <unordered_map>
-#include <string>
-#include <vector>
+//---------- Interface de la classe <Requete> (fichier Requete.h) ----------------
+#if ! defined ( REQUETE_H )
+#define REQUETE_H
 //--------------------------------------------------- Interfaces utilisées
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
-// Rôle de la classe <Analyse>
+// Rôle de la classe <Requete>
 //
 //
 //------------------------------------------------------------------------
-class Analyse
+class Requete
 {
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
-  void const Generation_dot() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
   // Contrat :
   //
-
-  void AddRequete(const Requete & Requete);
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
-
-
-  void AddRequete(const vector<Requete> & vecReq);
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
-  
 //------------------------------------------------- Surcharge d'opérateurs
-  Analyse & operator = ( const Analyse & unAnalyse );
+  Requete & operator = ( const Requete & unRequete );
   // Mode d'emploi :
   //
   // Contrat :
   //
 //-------------------------------------------- Constructeurs - destructeur
-  Analyse ( const Analyse & unAnalyse );
+  Requete ( const Requete & unRequete );
   // Mode d'emploi (constructeur de copie) :
   //
   // Contrat :
   //
-  Analyse ( );
+  Requete ( );
   // Mode d'emploi :
   //
   // Contrat :
   //
-  virtual ~Analyse ( );
+  virtual ~Requete ( );
   // Mode d'emploi :
   //
   // Contrat :
   //
-  void GetTop() const;
 //------------------------------------------------------------------ PRIVE
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
-
-unordered_map <string, pair<unordered_map <string, int>, int>> data;
 };
-//-------------------------------- Autres définitions dépendantes de <Analyse>
-#endif // ANALYSE_H
+//-------------------------------- Autres définitions dépendantes de <Requete>
+#endif // REQUETE_H
