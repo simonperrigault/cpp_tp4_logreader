@@ -1,1 +1,1 @@
-cat fichier.txt >sortie.txt
+../../readerlog.out ../../exemple_mini_non_exhaustif.log
