@@ -8,7 +8,7 @@ LIBS =
 INT = $(wildcard int/*)
 SRC = $(wildcard src/*)
 OBJ = $(SRC:src/%.cpp=obj/%.o)
-EXE = readerlog
+EXE = readerlog.out
 EFFACE = clean
 
 $(EXE) : $(OBJ)
