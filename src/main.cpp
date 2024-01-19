@@ -46,9 +46,8 @@ int main (int argc, char *argv[])
   Requete req;
   vector<Requete> tableauRequetes;
 
-  while (reader)
+  while (req = reader.GetNextRequest())
   {
-    req = reader.GetNextRequest();
     if (wantTime && requete.hour != time)
     {
       continue;
