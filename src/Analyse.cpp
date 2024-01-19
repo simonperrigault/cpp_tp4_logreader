@@ -16,6 +16,7 @@ using namespace std;
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <fstream>
 #include <algorithm>
 
 
@@ -98,11 +99,28 @@ Analyse::~Analyse ( )
 //----------------------------------------------------- Méthodes protégées
 
 
-void const Analyse::Generation_dot() const
+bool Analyse::Generation_dot() const
 {
   string fichier;
+  ofstream file (".dot", ofstream::out|ofstream::trunc);
   fichier += "digraph {";
   vector <string> noeud_cree;
+
+  if (!file.isopen())
+  {
+    cerr << "Problème ouverture du fichier" << endl;
+    file.close();
+    return false;
+  }
+
+  if (data.size() == 0)
+  {
+    cerr << "Aucun graph créé" << endl;
+    file.close();
+    return false;
+  }
+
+
   for (data::iterator it1= data.begin() ; it1 != data.end(); it1++)
   {
     if (find(noeud_cree.begin(), noeud_cree.end(), it1->first))
@@ -124,5 +142,19 @@ void const Analyse::Generation_dot() const
   }
   
   fichier += "}";
+
+
+  
+
+  file << fichier;
+
+  if (file.good())
+  {
+    cout << "Graphe généré avec succés !" << endl;
+    file.close();
+  }
+  
+
+  return true;
 
 }
