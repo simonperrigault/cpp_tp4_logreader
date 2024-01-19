@@ -47,6 +47,25 @@ void Analyse::GetTop() const
   }
 }
 
+void Analyse::AddRequete(Requete & Requete)
+{
+    ++(data[Requete.cible].second);                  // Incrémente le deuxième élément de la paire associé à la cible
+                                                    // Si aucune paire associée, élément intialisé à zéro puis incrémenté
+        
+    ++data[Requete.cible].first[Requete.referer];    // Incrémente l'élément associé à au referer
+    
+}
+
+void Analyse::AddRequete(vector <Requete> vecReq)
+{
+  iterator vecReq.begin();
+  while (iterator)                  //Parcours du vecteur à l'aide de l'itérateur appel à la fonction pour chaque Requete de AddRequete
+  {
+    AddRequete(*iterator);
+    ++iterator;
+  }
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Analyse & Analyse::operator = ( const Analyse & unAnalyse )
 // Algorithme :

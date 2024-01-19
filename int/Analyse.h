@@ -8,6 +8,11 @@
 //---------- Interface de la classe <Analyse> (fichier Analyse.h) ----------------
 #if ! defined ( ANALYSE_H )
 #define ANALYSE_H
+
+#include <Requete.h>
+#include <unordered_map>
+#include <string>
+#include <vector>
 //--------------------------------------------------- Interfaces utilisées
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
@@ -27,6 +32,22 @@ public:
   //
   // Contrat :
   //
+
+  void AddRequete(Requete& Requete);
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+
+  void AddRequete(vector <Requete>);
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+  
 //------------------------------------------------- Surcharge d'opérateurs
   Analyse & operator = ( const Analyse & unAnalyse );
   // Mode d'emploi :
@@ -55,6 +76,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
 
+unordered_map <string, pair <unordered_map <string, int>, int> data;
 };
 //-------------------------------- Autres définitions dépendantes de <Analyse>
 #endif // ANALYSE_H
