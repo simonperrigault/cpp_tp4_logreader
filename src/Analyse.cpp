@@ -89,19 +89,20 @@ void const Analyse::Generation_dot() const
   vector <string> noeud_cree;
   for (data::iterator it1= data.begin() ; it1 != data.end(); it1++)
   {
-    if (data->first not in  noeud_cree)
+    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first))
     {
-      fichier += data->first;
-      noeud_cree.push_back(data->first);
+      fichier += it1->first + ";";
+      noeud_cree.push_back(it1->first);
     }
     
     for (data::iterator it2= it1->second.at(0).begin() ; it2 != it1->second.at(0).end(); it2++)
     {
-      if (data->first not in  noeud_cree)
+      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first))
       {
-        fichier += data->first;
-        noeud_cree.push_back(data->first);
+        fichier += it2->first + ";";
+        noeud_cree.push_back(it2->first);
       }
+      fichier += it2->first + "->" + it1->first + "[label=\""+ to_string(it2->second)+"\"" + ";" + "\n";
     }
     
   }
