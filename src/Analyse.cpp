@@ -12,6 +12,12 @@ using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "../int/Analyse.h"
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+
 //------------------------------------------------------------- Constantes
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -20,6 +26,26 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
+
+void Analyse::GetTop() const
+{
+  vector<pair<int, string>> top;
+  for (auto it = data.begin(); it != data.end(); ++it)
+  {
+    push_heap(top.begin(), top.end(), [](pair<int, string> a, pair<int, string> b) { return a.first < b.first; });
+    // on change la manière de comparer les pairs pour que le premier élément le plus grand soit en haut
+    if (top.size() > 10)
+    {
+      top.pop_back();
+    }
+  }
+  cout << "Top 10:" << endl;
+  for (auto it = top.begin(); it != top.end(); ++it)
+  {
+    cout << "\t" << it->second << " (" << it->first << " hits)" << endl;
+  }
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Analyse & Analyse::operator = ( const Analyse & unAnalyse )
 // Algorithme :

@@ -48,10 +48,12 @@ public:
   //
   // Contrat :
   //
+  void GetTop() const;
 //------------------------------------------------------------------ PRIVE
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
+
 };
 //-------------------------------- Autres définitions dépendantes de <Analyse>
 #endif // ANALYSE_H
