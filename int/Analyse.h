@@ -40,13 +40,6 @@ public:
   // Contrat :
   //
 
-
-  void AddRequete(const vector<Requete> & vecReq);
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
   
 //------------------------------------------------- Surcharge d'opérateurs
   Analyse & operator = ( const Analyse & unAnalyse );
@@ -60,7 +53,7 @@ public:
   //
   // Contrat :
   //
-  Analyse ( );
+  Analyse (const vector<Requete> & vecReq);
   // Mode d'emploi :
   //
   // Contrat :

@@ -6,6 +6,7 @@ if [ "$1" = "" ]
 then
   echo "No directory given, default to current"
   Directory="."
+  pwd | cat
 else  
   echo "| Test id : $1"
   if [ -d "$1" ]

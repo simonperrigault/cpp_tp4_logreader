@@ -6,7 +6,7 @@
     e-mail               : EMAIL$
 *************************************************************************/
 //---------- Interface de la classe <Reader> (fichier Reader.h) ----------------
-#if ! defined ( READER_H )
+#if !defined(READER_H)
 #define READER_H
 //--------------------------------------------------- Interfaces utilisées
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <sstream>
 #include "Requete.h"
+
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
@@ -26,37 +28,34 @@
 
 class Reader : public ifstream
 {
-//----------------------------------------------------------------- PUBLIC
+  //----------------------------------------------------------------- PUBLIC
 public:
-//----------------------------------------------------- Méthodes publiques
+  //----------------------------------------------------- Méthodes publiques
 
-  Requete GetNextRequest(); //méthode qui lit le fichier log et renvoie la requête suivante
-//------------------------------------------------- Surcharge d'opérateurs
-  Reader & operator = ( const Reader & unReader );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
-//-------------------------------------------- Constructeurs - destructeur
-  Reader ( const Reader & unReader );
+  Reader & GetNextRequest(Requete & req); // méthode qui lit le fichier log et renvoie la requête suivante
+  void PrintFlags() const;
+  //------------------------------------------------- Surcharge d'opérateurs
+
+  //-------------------------------------------- Constructeurs - destructeur
+  Reader(const Reader &unReader);
   // Mode d'emploi (constructeur de copie) :
   //
   // Contrat :
   //
-  Reader(const string & cheminFichierLog, const string & URL_BASE);
+  Reader(const string &cheminFichierLog, const string &URL_BASE);
   // Mode d'emploi :
   //
   // Contrat :
   //
-  virtual ~Reader ( );
+  virtual ~Reader();
   // Mode d'emploi :
   //
   // Contrat :
   //
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 protected:
-//----------------------------------------------------- Méthodes protégées
-//----------------------------------------------------- Attributs protégés
+  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Attributs protégés
   string url_base;
 };
 //-------------------------------- Autres définitions dépendantes de <Reader>

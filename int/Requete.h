@@ -9,6 +9,10 @@
 #if ! defined ( REQUETE_H )
 #define REQUETE_H
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
+
+using namespace std;
+
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
@@ -38,7 +42,7 @@ public:
   //
   // Contrat :
   //
-  Requete(const string & p_ip, const string & p_userLogName, const string & p_authenticatedUser, const string & p_date, int p_hour, int p_minute, int p_gmt, const string & p_requestType, const string & p_target,const string & p_protocole, int p_status, int p_size, const string & p_referer, const string & p_navigator);
+  Requete(const string & p_ip="", const string & p_userLogName="", const string & p_authenticatedUser="", const string & p_date="", int p_hour=0, int p_minute=0, int p_second=0, int p_gmt=0, const string & p_requestType="", const string & p_target="",const string & p_protocole="", int p_status=0, int p_size=0, const string & p_referer="", const string & p_navigator="");
   // Mode d'emploi :
   //
   // Contrat :
@@ -55,6 +59,7 @@ public:
   string date;
   int hour;
   int minute;
+  int second;
   int gmt;
   string requestType;
   string cible;

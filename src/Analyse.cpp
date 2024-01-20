@@ -19,7 +19,6 @@ using namespace std;
 #include <fstream>
 #include <algorithm>
 
-
 //------------------------------------------------------------- Constantes
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -34,7 +33,9 @@ void Analyse::GetTop() const
   vector<pair<int, string>> top;
   for (auto it = data.begin(); it != data.end(); ++it)
   {
-    push_heap(top.begin(), top.end(), [](pair<int, string> a, pair<int, string> b) { return a.first < b.first; });
+    top.push_back(make_pair(it->second.second, it->first));
+    push_heap(top.begin(), top.end(), [](pair<int, string> a, pair<int, string> b)
+              { return a.first < b.first; });
     // on change la manière de comparer les pairs pour que le premier élément le plus grand soit en haut
     if (top.size() > 10)
     {
@@ -48,30 +49,21 @@ void Analyse::GetTop() const
   }
 }
 
-void Analyse::AddRequete(const Requete & Requete)
+void Analyse::AddRequete(const Requete &Requete)
 {
-    ++(data[Requete.cible].second);                  // Incrémente le deuxième élément de la paire associé à la cible
-                                                     // Si aucune paire associée, élément intialisé à zéro puis incrémenté
-    ++data[Requete.cible].first[Requete.referer];    // Incrémente l'élément associé à au referer
-    
-}
-
-void Analyse::AddRequete(const vector<Requete> & vecReq)
-{
-  for (vector<Requete>::const_iterator iterator = vecReq.begin(); iterator != vecReq.end(); iterator++)
-  {
-    AddRequete(*iterator);
-  }
+  ++(data[Requete.cible].second); // Incrémente le deuxième élément de la paire associé à la cible
+  // Si aucune paire associée, élément intialisé à zéro puis incrémenté
+  ++data[Requete.cible].first[Requete.referer]; // Incrémente l'élément associé au referer
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Analyse & Analyse::operator = ( const Analyse & unAnalyse )
+Analyse &Analyse::operator=(const Analyse &unAnalyse)
 // Algorithme :
 //
 {
 } //----- Fin de operator =
 //-------------------------------------------- Constructeurs - destructeur
-Analyse::Analyse ( const Analyse & unAnalyse )
+Analyse::Analyse(const Analyse &unAnalyse)
 // Algorithme :
 //
 {
@@ -79,15 +71,19 @@ Analyse::Analyse ( const Analyse & unAnalyse )
   cout << "Appel au constructeur de copie de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse (constructeur de copie)
-Analyse::Analyse ( )
+Analyse::Analyse(const vector<Requete> & vecReq) : data()
 // Algorithme :
 //
 {
+  for (vector<Requete>::const_iterator iterator = vecReq.begin(); iterator != vecReq.end(); iterator++)
+  {
+    AddRequete(*iterator);
+  }
 #ifdef MAP
   cout << "Appel au constructeur de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse
-Analyse::~Analyse ( )
+Analyse::~Analyse()
 // Algorithme :
 //
 {
@@ -98,13 +94,12 @@ Analyse::~Analyse ( )
 //------------------------------------------------------------------ PRIVE
 //----------------------------------------------------- Méthodes protégées
 
-
 bool Analyse::Generation_dot() const
 {
   string fichier;
-  ofstream file (".dot", ofstream::out|ofstream::trunc);
+  ofstream file(".dot", ofstream::out | ofstream::trunc);
   fichier += "digraph {";
-  vector <string> noeud_cree;
+  vector<string> noeud_cree;
 
   if (!file)
   {
@@ -120,31 +115,26 @@ bool Analyse::Generation_dot() const
     return false;
   }
 
+  // for (auto it1 = data.begin(); it1 != data.end(); it1++)
+  // {
+  //   if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
+  //   {
+  //     fichier += it1->first + ";";
+  //     noeud_cree.push_back(it1->first);
+  //   }
 
-  for (data::iterator it1= data.begin() ; it1 != data.end(); it1++)
-  {
-    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first))
-    {
-      fichier += it1->first + ";";
-      noeud_cree.push_back(it1->first);
-    }
-    
-    for (data::iterator it2= it1->second.at(0).begin() ; it2 != it1->second.at(0).end(); it2++)
-    {
-      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first))
-      {
-        fichier += it2->first + ";";
-        noeud_cree.push_back(it2->first);
-      }
-      fichier += it2->first + "->" + it1->first + "[label=\""+ to_string(it2->second)+"\"" + ";" + "\n";
-    }
-    
-  }
-  
+  //   for (auto it2 = it1->second.at(0).begin(); it2 != it1->second.at(0).end(); it2++)
+  //   {
+  //     if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
+  //     {
+  //       fichier += it2->first + ";";
+  //       noeud_cree.push_back(it2->first);
+  //     }
+  //     fichier += it2->first + "->" + it1->first + "[label=\"" + to_string(it2->second) + "\"" + ";" + "\n";
+  //   }
+  // }
+
   fichier += "}";
-
-
-  
 
   file << fichier;
 
@@ -153,8 +143,6 @@ bool Analyse::Generation_dot() const
     cout << "Graphe généré avec succés !" << endl;
     file.close();
   }
-  
 
   return true;
-
 }

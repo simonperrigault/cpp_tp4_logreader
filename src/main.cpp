@@ -13,7 +13,7 @@ int main (int argc, char *argv[])
 {
   if (argc != 2)
   {
-    cout << "Usage: ./readerlog.out [options] file.log" << endl;
+    cout << "Usage: " << argv[0] << " [options] file.log" << endl;
     return 1;
   }
   bool wantGraph = false;
@@ -44,10 +44,10 @@ int main (int argc, char *argv[])
   string filename = argv[argc - 1];
   Reader reader(filename, URL_BASE);
   vector<Requete> tableauRequetes;
+  Requete req;
 
-  while (reader)
+  while (reader.GetNextRequest(req))
   {
-    Requete req(reader.GetNextRequest());
     if (wantTime && req.hour != time)
     {
       continue;
@@ -58,6 +58,9 @@ int main (int argc, char *argv[])
     }
     tableauRequetes.push_back(req);
   }
+
+  Analyse analyse(tableauRequetes);
+  analyse.GetTop();
 
   return 0;
 }
