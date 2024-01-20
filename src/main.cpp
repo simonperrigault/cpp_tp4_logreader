@@ -43,17 +43,16 @@ int main (int argc, char *argv[])
 
   string filename = argv[argc - 1];
   Reader reader(filename, URL_BASE);
-  Requete req;
   vector<Requete> tableauRequetes;
 
-  while (reader.hasNextRequest())
+  while (reader)
   {
-    req = reader.GetNextRequest();
-    if (wantTime && requete.hour != time)
+    Requete req(reader.GetNextRequest());
+    if (wantTime && req.hour != time)
     {
       continue;
     }
-    if (!wantImage && requete.target.find(".html") == string::npos && requete.target.find(".php") == string::npos)
+    if (!wantImage && req.cible.find(".html") == string::npos && req.cible.find(".php") == string::npos)
     {
       continue;
     }

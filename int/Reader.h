@@ -9,6 +9,13 @@
 #if ! defined ( READER_H )
 #define READER_H
 //--------------------------------------------------- Interfaces utilisées
+
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include "Requete.h"
+
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
@@ -16,16 +23,14 @@
 //
 //
 //------------------------------------------------------------------------
-class Reader
+
+class Reader : public ifstream
 {
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
+
+  Requete GetNextRequest(); //méthode qui lit le fichier log et renvoie la requête suivante
 //------------------------------------------------- Surcharge d'opérateurs
   Reader & operator = ( const Reader & unReader );
   // Mode d'emploi :
@@ -38,7 +43,7 @@ public:
   //
   // Contrat :
   //
-  Reader ( );
+  Reader(const string & cheminFichierLog, const string & URL_BASE);
   // Mode d'emploi :
   //
   // Contrat :
@@ -52,6 +57,7 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
+  string url_base;
 };
 //-------------------------------- Autres définitions dépendantes de <Reader>
 #endif // READER_H

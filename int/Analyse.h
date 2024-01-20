@@ -76,7 +76,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
 
-unordered_map <string, pair<unordered_map <string, int>, int>> data;
+  unordered_map <string, pair<unordered_map <string, int>, int>> data;
 };
 //-------------------------------- Autres définitions dépendantes de <Analyse>
 #endif // ANALYSE_H

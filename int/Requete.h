@@ -38,7 +38,7 @@ public:
   //
   // Contrat :
   //
-  Requete ( );
+  Requete(const string & p_ip, const string & p_userLogName, const string & p_authenticatedUser, const string & p_date, int p_hour, int p_minute, int p_gmt, const string & p_requestType, const string & p_target,const string & p_protocole, int p_status, int p_size, const string & p_referer, const string & p_navigator);
   // Mode d'emploi :
   //
   // Contrat :
@@ -48,10 +48,26 @@ public:
   //
   // Contrat :
   //
+
+  string ip;
+  string userLogName;
+  string authenticatedUser;
+  string date;
+  int hour;
+  int minute;
+  int gmt;
+  string requestType;
+  string cible;
+  string protocole;
+  int status;
+  int size;
+  string referer;
+  string navigator;
 //------------------------------------------------------------------ PRIVE
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
 };
+
 //-------------------------------- Autres définitions dépendantes de <Requete>
 #endif // REQUETE_H

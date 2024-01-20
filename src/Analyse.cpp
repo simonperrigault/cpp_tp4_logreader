@@ -58,7 +58,7 @@ void Analyse::AddRequete(const Requete & Requete)
 
 void Analyse::AddRequete(const vector<Requete> & vecReq)
 {
-  for (vector<Requete>::iterator iterator = vecReq.begin(); iterator != vecReq.end(); iterator++)
+  for (vector<Requete>::const_iterator iterator = vecReq.begin(); iterator != vecReq.end(); iterator++)
   {
     AddRequete(*iterator);
   }
@@ -106,7 +106,7 @@ bool Analyse::Generation_dot() const
   fichier += "digraph {";
   vector <string> noeud_cree;
 
-  if (!file.isopen())
+  if (!file)
   {
     cerr << "Problème ouverture du fichier" << endl;
     file.close();
