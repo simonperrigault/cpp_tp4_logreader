@@ -85,7 +85,7 @@ void Analyse::GetTop() const
 {
   vector<pair<int, string>> top;
   int mini = 0;
-  for (auto it = data.begin(); it != data.end(); ++it)
+  for (unordered_map<string, pair<unordered_map<string, int>, int>>::const_iterator it = data.cbegin(); it != data.cend(); ++it)
   {
     if (top.size() < 10)
     {
@@ -137,7 +137,7 @@ Analyse::Analyse(const vector<Requete> & vecReq) : data()
 // Algorithme :
 //
 {
-  for (vector<Requete>::const_iterator iterator = vecReq.begin(); iterator != vecReq.end(); iterator++)
+  for (vector<Requete>::const_iterator iterator = vecReq.cbegin(); iterator != vecReq.cend(); iterator++)
   {
     AddRequete(*iterator);
   }
