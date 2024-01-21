@@ -21,8 +21,7 @@ int main (int argc, char *argv[])
   bool wantTime = false;
   int time = 0;
   bool wantImage = true;
-
-  for (int i = 1; i < argc - 1; ++i)
+  for (int i = 1; i < argc; ++i)
   {
     string arg = argv[i];
     if (arg == "-e")

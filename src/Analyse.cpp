@@ -28,6 +28,59 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+bool Analyse::Generation_dot(string nom_fichier) const
+{
+  string fichier;
+  ofstream file(nom_fichier, ofstream::out | ofstream::trunc);
+  fichier += "digraph {";
+  vector<string> noeud_cree;
+  if (!file)
+  {
+    cerr << "Problème ouverture du fichier" << endl;
+    file.close();
+    return false;
+  }
+
+  if (data.size() == 0)
+  {
+    cerr << "Aucun graphe créé" << endl;
+    file.close();
+    return false;
+  }
+
+  for (auto it1 = data.begin(); it1 != data.end(); it1++)
+  {
+    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
+    {
+      fichier += "\""+it1->first + "\";";
+      noeud_cree.push_back(it1->first);
+    }
+
+    for (auto it2 = it1->second.first.begin(); it2 != it1->second.first.end(); it2++)
+    {
+      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
+      {
+        fichier += it2->first + ";";
+        noeud_cree.push_back(it2->first);
+      }
+      fichier += "\""+it2->first + "\"->\"" + it1->first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
+    }
+  }
+
+  fichier += "}";
+
+  file << fichier;
+
+  if (file.good())
+  {
+    cout << "Graphe généré avec succès !" << endl;
+    file.close();
+  }
+
+  return true;
+}
+
+
 void Analyse::GetTop() const
 {
   vector<pair<int, string>> top;
@@ -93,55 +146,3 @@ Analyse::~Analyse()
 } //----- Fin de ~Analyse
 //------------------------------------------------------------------ PRIVE
 //----------------------------------------------------- Méthodes protégées
-
-bool Analyse::Generation_dot(string nom_fichier) const
-{
-  string fichier;
-  ofstream file(nom_fichier, ofstream::out | ofstream::trunc);
-  fichier += "digraph {";
-  vector<string> noeud_cree;
-  if (!file)
-  {
-    cerr << "Problème ouverture du fichier" << endl;
-    file.close();
-    return false;
-  }
-
-  if (data.size() == 0)
-  {
-    cerr << "Aucun graphe créé" << endl;
-    file.close();
-    return false;
-  }
-
-  for (auto it1 = data.begin(); it1 != data.end(); it1++)
-  {
-    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
-    {
-      fichier += "\""+it1->first + "\";";
-      noeud_cree.push_back(it1->first);
-    }
-
-    for (auto it2 = it1->second.first.begin(); it2 != it1->second.first.end(); it2++)
-    {
-      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
-      {
-        fichier += it2->first + ";";
-        noeud_cree.push_back(it2->first);
-      }
-      fichier += "\""+it2->first + "\"->\"" + it1->first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
-    }
-  }
-
-  fichier += "}";
-
-  file << fichier;
-
-  if (file.good())
-  {
-    cout << "Graphe généré avec succés !" << endl;
-    file.close();
-  }
-
-  return true;
-}
