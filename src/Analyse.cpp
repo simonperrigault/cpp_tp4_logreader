@@ -84,19 +84,28 @@ bool Analyse::Generation_dot(string nom_fichier) const
 void Analyse::GetTop() const
 {
   vector<pair<int, string>> top;
+  int mini = 0;
   for (auto it = data.begin(); it != data.end(); ++it)
   {
-    top.push_back(make_pair(it->second.second, it->first));
-    push_heap(top.begin(), top.end(), [](pair<int, string> a, pair<int, string> b)
-              { return a.first < b.first; });
-    // on change la manière de comparer les pairs pour que le premier élément le plus grand soit en haut
-    if (top.size() > 10)
+    if (top.size() < 10)
     {
-      top.pop_back();
+      top.push_back(make_pair(it->second.second, it->first));
+      mini = min(mini, it->second.second);
+    }
+    else
+    {
+      if (it->second.second > mini)
+      {
+        top.push_back(make_pair(it->second.second, it->first));
+        sort(top.begin(), top.end());
+        top.erase(top.begin());
+        mini = top[0].first;
+      }
     }
   }
+  sort(top.begin(), top.end());
   cout << "Top 10:" << endl;
-  for (auto it = top.begin(); it != top.end(); ++it)
+  for (vector<pair<int, string>>::const_reverse_iterator it = top.crbegin(); it != top.crend(); ++it)
   {
     cout << "\t" << it->second << " (" << it->first << " hits)" << endl;
   }
