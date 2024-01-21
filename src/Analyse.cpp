@@ -57,11 +57,11 @@ void Analyse::AddRequete(const Requete &Requete)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Analyse &Analyse::operator=(const Analyse &unAnalyse)
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+// Analyse &Analyse::operator=(const Analyse &unAnalyse)
+// // Algorithme :
+// //
+// {
+// } //----- Fin de operator =
 //-------------------------------------------- Constructeurs - destructeur
 Analyse::Analyse(const Analyse &unAnalyse)
 // Algorithme :
@@ -94,13 +94,12 @@ Analyse::~Analyse()
 //------------------------------------------------------------------ PRIVE
 //----------------------------------------------------- Méthodes protégées
 
-bool Analyse::Generation_dot() const
+bool Analyse::Generation_dot(string nom_fichier) const
 {
   string fichier;
-  ofstream file(".dot", ofstream::out | ofstream::trunc);
+  ofstream file(nom_fichier, ofstream::out | ofstream::trunc);
   fichier += "digraph {";
   vector<string> noeud_cree;
-
   if (!file)
   {
     cerr << "Problème ouverture du fichier" << endl;
@@ -110,7 +109,7 @@ bool Analyse::Generation_dot() const
 
   if (data.size() == 0)
   {
-    cerr << "Aucun graph créé" << endl;
+    cerr << "Aucun graphe créé" << endl;
     file.close();
     return false;
   }
@@ -119,18 +118,18 @@ bool Analyse::Generation_dot() const
   {
     if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
     {
-      fichier += it1->first + ";";
+      fichier += "\""+it1->first + "\";";
       noeud_cree.push_back(it1->first);
     }
 
-    for (auto it2 = it1->second.at(0).begin(); it2 != it1->second.at(0).end(); it2++)
+    for (auto it2 = it1->second.first.begin(); it2 != it1->second.first.end(); it2++)
     {
       if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
       {
         fichier += it2->first + ";";
         noeud_cree.push_back(it2->first);
       }
-      fichier += it2->first + "->" + it1->first + "[label=\"" + to_string(it2->second) + "\"" + ";" + "\n";
+      fichier += "\""+it2->first + "\"->\"" + it1->first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
     }
   }
 

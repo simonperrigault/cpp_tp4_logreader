@@ -11,7 +11,7 @@ const string URL_BASE = "http://intranet-if.insa-lyon.fr";
 
 int main (int argc, char *argv[])
 {
-  if (argc != 2)
+  if (argc < 2)
   {
     cout << "Usage: " << argv[0] << " [options] file.log" << endl;
     return 1;
@@ -61,6 +61,12 @@ int main (int argc, char *argv[])
 
   Analyse analyse(tableauRequetes);
   analyse.GetTop();
+
+  if (wantGraph)
+  {
+    analyse.Generation_dot(graphFile);
+  }
+  
 
   return 0;
 }
