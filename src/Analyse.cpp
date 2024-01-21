@@ -115,24 +115,24 @@ bool Analyse::Generation_dot() const
     return false;
   }
 
-  // for (auto it1 = data.begin(); it1 != data.end(); it1++)
-  // {
-  //   if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
-  //   {
-  //     fichier += it1->first + ";";
-  //     noeud_cree.push_back(it1->first);
-  //   }
+  for (auto it1 = data.begin(); it1 != data.end(); it1++)
+  {
+    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
+    {
+      fichier += it1->first + ";";
+      noeud_cree.push_back(it1->first);
+    }
 
-  //   for (auto it2 = it1->second.at(0).begin(); it2 != it1->second.at(0).end(); it2++)
-  //   {
-  //     if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
-  //     {
-  //       fichier += it2->first + ";";
-  //       noeud_cree.push_back(it2->first);
-  //     }
-  //     fichier += it2->first + "->" + it1->first + "[label=\"" + to_string(it2->second) + "\"" + ";" + "\n";
-  //   }
-  // }
+    for (auto it2 = it1->second.at(0).begin(); it2 != it1->second.at(0).end(); it2++)
+    {
+      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
+      {
+        fichier += it2->first + ";";
+        noeud_cree.push_back(it2->first);
+      }
+      fichier += it2->first + "->" + it1->first + "[label=\"" + to_string(it2->second) + "\"" + ";" + "\n";
+    }
+  }
 
   fichier += "}";
 
