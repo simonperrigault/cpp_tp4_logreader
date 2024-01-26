@@ -90,14 +90,6 @@ int main (int argc, char *argv[])
     {
       req.referer.resize(pos);
     }
-
-    pos = req.referer.find(';');
-    pos = min(req.referer.find('#'), pos);
-    pos = min(req.referer.find('?'), pos);
-    if (pos != string::npos)
-    {
-      req.referer = req.referer.substr(0, pos);
-    }
     
     tableauRequetes.push_back(req);
   }
