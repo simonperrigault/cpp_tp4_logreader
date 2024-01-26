@@ -1,0 +1,1 @@
+../../logreader.exe -g graph.dot ../../exemple-mini-non-exhaustif.log
