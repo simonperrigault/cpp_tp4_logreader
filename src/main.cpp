@@ -67,7 +67,8 @@ int main (int argc, char *argv[])
     {
       extension = match[1].str();
       // liste des extensions trouvées dans anonyme.log
-      // 7z, asm, bmp, clf, css, doc, docx, gif, htlm, htm, html, ic, ico, ics, jpg, js, masm, pdf, php, png, pps, txt, xml, zip
+      // 7z, asm, bmp, clf, css, doc, docx, gif, htlm, htm, html, ic
+      // ico, ics, jpg, js, masm, pdf, php, png, pps, txt, xml, zip
 
       if (extension == "png" || extension == "jpg" || extension == "gif" || extension == "bmp" || extension == "ico")
       // images

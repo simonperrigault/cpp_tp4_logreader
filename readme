@@ -1,0 +1,8 @@
+Syntaxe : ./logreader [-e] [-t heure] [-g graph.dot] fichier.log
+
+Liste des paramètres :
+  - e : enlève les cibles de type image (png, jpg, bmp, git, ico)
+  - t : ne prend que les requêtes ayant été effectuées entre l'heure t et t+1 (exemple -t 11 prend tout entre 11h et 11h59)
+  - g : modifie le fichier .dot placé en paramètre pour écrire le graph correspondant aux requêtes du fichier log
+
+Retourne le top 10 des cibles les plus visitées (ou moins si moins de requêtes)
