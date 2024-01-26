@@ -60,6 +60,11 @@ int main (int argc, char *argv[])
     {
       continue;
     }
+    if (req.status >= 400) // enlève les erreurs
+    {
+      continue;
+    }
+
     tableauRequetes.push_back(req);
   }
 
