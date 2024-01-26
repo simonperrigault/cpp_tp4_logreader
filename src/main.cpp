@@ -42,6 +42,11 @@ int main (int argc, char *argv[])
 
   string filename = argv[argc - 1];
   Reader reader(filename, URL_BASE);
+  if (reader.is_open() == false)
+  {
+    cerr << "Erreur lors de l'ouverture du fichier" << endl;
+    return 1;
+  }
   vector<Requete> tableauRequetes;
   Requete req;
 
@@ -59,7 +64,7 @@ int main (int argc, char *argv[])
   }
 
   Analyse analyse(tableauRequetes);
-  analyse.GetTop();
+  analyse.GetTop(10);
 
   if (wantGraph)
   {

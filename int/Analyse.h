@@ -63,7 +63,7 @@ public:
   //
   // Contrat :
   //
-  void GetTop() const;
+  void GetTop(unsigned int taille) const;
 //------------------------------------------------------------------ PRIVE
 protected:
 //----------------------------------------------------- Méthodes protégées

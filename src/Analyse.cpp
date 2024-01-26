@@ -48,17 +48,17 @@ bool Analyse::Generation_dot(string nom_fichier) const
     return false;
   }
 
-  for (auto it1 = data.begin(); it1 != data.end(); it1++)
+  for (unordered_map <string, pair<unordered_map <string, int>, int>>::const_iterator it1 = data.cbegin(); it1 != data.cend(); it1++)
   {
-    if (find(noeud_cree.begin(), noeud_cree.end(), it1->first) != noeud_cree.end())
+    if (find(noeud_cree.cbegin(), noeud_cree.cend(), it1->first) != noeud_cree.cend())
     {
       fichier += "\""+it1->first + "\";";
       noeud_cree.push_back(it1->first);
     }
 
-    for (auto it2 = it1->second.first.begin(); it2 != it1->second.first.end(); it2++)
+    for (unordered_map <string, int>::const_iterator it2 = it1->second.first.cbegin(); it2 != it1->second.first.cend(); it2++)
     {
-      if (find(noeud_cree.begin(), noeud_cree.end(), it2->first) != noeud_cree.end())
+      if (find(noeud_cree.cbegin(), noeud_cree.cend(), it2->first) != noeud_cree.cend())
       {
         fichier += it2->first + ";";
         noeud_cree.push_back(it2->first);
@@ -81,13 +81,13 @@ bool Analyse::Generation_dot(string nom_fichier) const
 }
 
 
-void Analyse::GetTop() const
+void Analyse::GetTop(unsigned int taille) const
 {
   vector<pair<int, string>> top;
   int mini = 0;
   for (unordered_map<string, pair<unordered_map<string, int>, int>>::const_iterator it = data.cbegin(); it != data.cend(); ++it)
   {
-    if (top.size() < 10)
+    if (top.size() < taille)
     {
       top.push_back(make_pair(it->second.second, it->first));
       mini = min(mini, it->second.second);
@@ -104,10 +104,17 @@ void Analyse::GetTop() const
     }
   }
   sort(top.begin(), top.end());
-  cout << "Top 10:" << endl;
+  cout << "Top " << taille << ":" << endl;
   for (vector<pair<int, string>>::const_reverse_iterator it = top.crbegin(); it != top.crend(); ++it)
   {
-    cout << "\t" << it->second << " (" << it->first << " hits)" << endl;
+    if (it->first == 1)
+    {
+      cout << "\t" << it->second << " (" << it->first << " hit)" << endl;
+    }
+    else
+    {
+      cout << "\t" << it->second << " (" << it->first << " hits)" << endl;
+    }
   }
 }
 
