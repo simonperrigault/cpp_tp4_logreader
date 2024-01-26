@@ -49,9 +49,11 @@ int main (int argc, char *argv[])
   }
   vector<Requete> tableauRequetes;
   Requete req;
+  size_t pos;
 
   while (reader.GetNextRequest(req))
   {
+    
     if (wantTime && req.hour != time)
     {
       continue;
@@ -66,6 +68,15 @@ int main (int argc, char *argv[])
     }
 
     tableauRequetes.push_back(req);
+    pos = req.cible.find(';');
+    pos = min(req.cible.find('#'), pos);
+    pos = min(req.cible.find('?'), pos);
+    if (pos != string::npos)
+    {
+      req.cible = req.cible.substr(0, pos);
+    }
+    
+        tableauRequetes.push_back(req);
   }
 
   Analyse analyse(tableauRequetes);
