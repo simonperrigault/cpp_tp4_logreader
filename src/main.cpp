@@ -59,6 +59,7 @@ int main (int argc, char *argv[])
     {
       continue;
     }
+
     string extension;
     regex pattern_extension("\\.([^\\.]{1,5})$");
     smatch match;
@@ -73,9 +74,6 @@ int main (int argc, char *argv[])
       {
         continue;
       }
-    }
-    {
-      continue;
     }
     if (req.status >= 400) // enlève les erreurs
     {
