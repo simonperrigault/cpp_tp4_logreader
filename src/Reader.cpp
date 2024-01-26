@@ -22,27 +22,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Reader::PrintFlags() const
-  {
-    cout << "good() = " << good() << endl;
-    cout << "eof() = " << eof() << endl;
-    cout << "fail() = " << fail() << endl;
-    cout << "bad() = " << bad() << endl;
-  }
-
 Reader & Reader::GetNextRequest(Requete & req)
 {
-  if (eof())
-  {
-    setstate(ios::failbit); // on indique que le flux est en erreur car fin du fichier
-    return *this;
-  }
 
   // peut faire regex
   // std::regex e("(\\d+\\.\\d+\\.\\d+\\.\\d+) (-) (-) \\[(\\d{2}/\\w{3}/\\d{4}):(\\d{2}):(\\d{2}):(\\d{2}) (\\+|-)0(\\d)00] \\\"(\\w+) ([\\w\\d\\./]+) ([^\\\"]+)\\\" (\\d+|-) (\\d+|-) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"");
 
   string ligne;
   std::getline(*this, ligne);      // on récupère la ligne suivante du fichier log
+  if (!(*this))
+  {
+    return *this;
+  }
   stringstream flux_string(ligne); // on convertit la ligne en flux
 
   string hour_string;
