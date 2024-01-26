@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B2299BA9E325800BC.dsi-vm03" [label="1"];
 "-"->"/cas/themes/insa/media/favicon.ico;jsessionid=1108212834EA61DD4CCDF371CE0DDF31.dsi-vm04" [label="1"];
 "/SiteWebIF/Intranet-etudiant.php"->"/permanences/" [label="1"];
@@ -14,6 +15,17 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/3IF19.html"->"/temps/3IF20.html" [label="1"];
 "/temps/3IF18.html"->"/temps/3IF19.html" [label="1"];
 "/temps/3IF14.html"->"/temps/3IF15.html" [label="1"];
+=======
+digraph {"-"->"/temps/4IF4.ics" [label="3"];
+"/SiteWebIF/Intranet-etudiant.php"->"/permanences/" [label="1"];
+"/temps/SoutenancesPFE.html"->"/temps/loupe.gif" [label="1"];
+"/stages/Listestage.php"->"/stages/descriptif/MEDIAL.pdf" [label="1"];
+"/temps/SoutenancesPFE.html"->"/temps/style_pfe.css" [label="1"];
+"-"->"/notesif/RSS/RSS_3IF.xml" [label="1"];
+"/temps/3IF20.html"->"/temps/3IF21.html" [label="1"];
+"/temps/3IF19.html"->"/temps/3IF20.html" [label="1"];
+"/temps/3IF18.html"->"/temps/3IF19.html" [label="1"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "-"->"/temps/GO.ics" [label="1"];
 "/temps/3IF44.html"->"/temps/3IF45.html" [label="1"];
 "/temps/3IF51.html"->"/temps/3IF52.html" [label="1"];
@@ -28,6 +40,7 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/SiteWebIF/Intranet-etudiant.php"->"/stages/Listestage.php" [label="2"];
 "/SiteWebIF/Intranet-etudiant.php"->"/temps/SoutenancesPFE.html" [label="1"];
 "/temps/3IF47.html"->"/temps/3IF48.html" [label="1"];
+<<<<<<< HEAD
 "-"->"/SiteWebIF/Intranet-etudiant.php?ticket=ST-341667-KHlNEzic9e5btb4JQ1Nw-dsi-vm03" [label="1"];
 "/temps/3IF43.html"->"/temps/3IF44.html" [label="1"];
 "/temps/3IF48.html"->"/temps/3IF49.html" [label="1"];
@@ -40,6 +53,16 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/3IF37.html"->"/temps/INSA.jpg" [label="1"];
 "/temps/3IF15.html"->"/temps/3IF16.html" [label="1"];
 "/temps/3IF49.html"->"/temps/3IF50.html" [label="1"];
+=======
+"/temps/3IF43.html"->"/temps/3IF44.html" [label="1"];
+"/temps/3IF48.html"->"/temps/3IF49.html" [label="1"];
+"http://www.google.com/url"->"/" [label="1"];
+"-"->"/" [label="2"];
+"http://if.insa-lyon.fr/vie-etudiante/laedi"->"/SiteWebIF/Intranet-etudiant.php" [label="1"];
+"-"->"/SiteWebIF/Intranet-etudiant.php" [label="18"];
+"http://if.insa-lyon.fr/"->"/SiteWebIF/Intranet-etudiant.php" [label="11"];
+"/temps/3IF38.html"->"/temps/3IF39.html" [label="5"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "/temps/3IF37.html"->"/temps/index.html" [label="1"];
 "/temps/3IF39.html"->"/temps/index.html" [label="1"];
 "/temps/3IF1.html"->"/temps/3IF2.html" [label="1"];
@@ -47,6 +70,7 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/3IF42.html"->"/temps/3IF43.html" [label="1"];
 "/temps/3IF17.html"->"/temps/3IF18.html" [label="1"];
 "-"->"/temps/3IF1.ics" [label="6"];
+<<<<<<< HEAD
 "http://www.google.fr/url?sa=t&rct=j&q=emplois%20du%20temsp%20insa&source=web&cd=1&ved=0CCkQFjAA&url=http%3A%2F%2Fintranet-if.insa-lyon.fr%2Ftemps%2F&ei=xBRLUPSZFs61hAepl4CoCg&usg=AFQjCNEWrHsRdIlhli_31qYl94w-yMCjpw"->"/temps/" [label="1"];
 "http://www.google.com/gwt/x?hl=fr&u=http://intranet-if.insa-lyon.fr/temps/&client=ms-samsung&q=IntraNet+if&sa=X&ei=ixFLUKzxAYazhAeFh4HICA&ved=0CB4QFjAA"->"/temps/" [label="1"];
 "-"->"/temps/" [label="1"];
@@ -54,10 +78,18 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/SiteWebIF/Intranet-etudiant.php"->"/temps/" [label="1"];
 "http://www.google.fr/search?hl=fr&gl=FR&ie=UTF-8&source=android-browser&q=intranet+if&redir_esc=&ei=ng1LUJe9KIGf0QXdg4HoAg"->"/temps/" [label="1"];
 "http://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CDIQFjAB&url=http%3A%2F%2Fintranet-if.insa-lyon.fr%2Ftemps%2F&ei=_wxLUKCwEMaJhQe08oCYCw&usg=AFQjCNEWrHsRdIlhli_31qYl94w-yMCjpw&sig2=eTdZgqmz8aDAi5eiWxEP1g"->"/temps/" [label="1"];
+=======
+"http://www.google.com/gwt/x"->"/temps/" [label="1"];
+"-"->"/temps/" [label="1"];
+"/SiteWebIF/Intranet-etudiant.php"->"/temps/" [label="1"];
+"http://www.google.fr/search"->"/temps/" [label="1"];
+"http://www.google.fr/url"->"/temps/" [label="3"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "-"->"/temps/3IF2.ics" [label="1"];
 "-"->"/notesif" [label="4"];
 "/SiteWebIF/Intranet-etudiant.php"->"/notesif" [label="4"];
 "/temps/"->"/temps/3IF37.html" [label="5"];
+<<<<<<< HEAD
 "-"->"/SiteWebIF/Intranet-etudiant.php?ticket=ST-19003-iWUXxygHfEPoGzBotWq0-dsi-vm04" [label="1"];
 "/SiteWebIF/Intranet-etudiant.php"->"/stages/bandeauFinal.jpg" [label="3"];
 "-"->"/SiteWebIF/Intranet-etudiant.php?ticket=ST-19118-EabntXV7HXc1iIbI5sou-dsi-vm04" [label="1"];
@@ -65,6 +97,16 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/4IF16.html"->"/temps/4IF17.html" [label="1"];
 "/temps/4IF17.html"->"/temps/4IF18.html" [label="1"];
 "-"->"/cas/themes/insa/media/favicon.ico;jsessionid=5FDA7AC7A09C7F51E030D14E26568F12.dsi-vm04" [label="1"];
+=======
+"/SiteWebIF/Intranet-etudiant.php"->"/stages/bandeauFinal.jpg" [label="3"];
+"/temps/3IF14.html"->"/temps/3IF15.html" [label="1"];
+"/temps/3IF7.html"->"/temps/3IF8.html" [label="1"];
+"/temps/4IF16.html"->"/temps/4IF17.html" [label="1"];
+"/temps/3IF37.html"->"/temps/INSA.jpg" [label="1"];
+"/temps/3IF49.html"->"/temps/3IF50.html" [label="1"];
+"/temps/3IF15.html"->"/temps/3IF16.html" [label="1"];
+"/temps/4IF17.html"->"/temps/4IF18.html" [label="1"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "/temps/"->"/temps/FondInsa.jpg" [label="4"];
 "/temps/style_emploi_du_temps.css"->"/temps/FondInsa.jpg" [label="2"];
 "/temps/"->"/temps/style_emploi_du_temps.css" [label="6"];
@@ -74,6 +116,7 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "-"->"/temps/4IF1.ics" [label="2"];
 "/temps/3IF37.html"->"/temps/choix.gif" [label="4"];
 "/temps/3IF37.html"->"/temps/3IF38.html" [label="6"];
+<<<<<<< HEAD
 "/temps/4IF19.html"->"/temps/4IF20.html" [label="1"];
 "/temps/3IF37.html"->"/temps/precedent.gif" [label="4"];
 "-"->"/SiteWebIF/Intranet-etudiant.php?ticket=ST-341866-kd9uCwjkxLkydUzKTbsD-dsi-vm03" [label="1"];
@@ -83,6 +126,12 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/3IF8.html"->"/temps/3IF9.html" [label="1"];
 "/temps/3IF12.html"->"/temps/3IF13.html" [label="1"];
 "/SiteWebIF/Intranet-etudiant.php"->"/stages/style_pfe.css" [label="3"];
+=======
+"/SiteWebIF/Intranet-etudiant.php"->"/stages/style_pfe.css" [label="3"];
+"/temps/4IF19.html"->"/temps/4IF20.html" [label="1"];
+"/temps/3IF37.html"->"/temps/precedent.gif" [label="4"];
+"/temps/3IF52.html"->"/temps/3IF1.html" [label="1"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "/SiteWebIF/Intranet-etudiant.php"->"/stages/FondInsa.jpg" [label="1"];
 "/stages/style_pfe.css"->"/stages/FondInsa.jpg" [label="2"];
 "-"->"/notesif/" [label="4"];
@@ -102,9 +151,17 @@ digraph {"-"->"/cas/themes/insa/media/favicon.ico;jsessionid=ECC02D7B807C9B1B229
 "/temps/3IF9.html"->"/temps/3IF10.html" [label="1"];
 "/temps/3IF3.html"->"/temps/3IF4.html" [label="1"];
 "/SiteWebIF/Intranet-etudiant.php"->"/permanences" [label="1"];
+<<<<<<< HEAD
 "/"->"/cache/caa37016007b56628f231acfd3d91188" [label="1"];
+=======
+>>>>>>> bcfd488 (Tronquer cible et referer)
 "/temps/3IF4.html"->"/temps/3IF5.html" [label="1"];
 "/temps/3IF5.html"->"/temps/3IF6.html" [label="1"];
 "/temps/3IF10.html"->"/temps/3IF11.html" [label="1"];
 "/temps/3IF6.html"->"/temps/3IF7.html" [label="1"];
+<<<<<<< HEAD
+=======
+"/temps/3IF8.html"->"/temps/3IF9.html" [label="1"];
+"/temps/3IF12.html"->"/temps/3IF13.html" [label="1"];
+>>>>>>> bcfd488 (Tronquer cible et referer)
 }

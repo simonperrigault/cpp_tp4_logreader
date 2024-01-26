@@ -82,16 +82,18 @@ int main (int argc, char *argv[])
       continue;
     }
 
-    tableauRequetes.push_back(req);
-    pos = req.cible.find(';');
-    pos = min(req.cible.find('#'), pos);
-    pos = min(req.cible.find('?'), pos);
+    pos = min(req.cible.find('#'), min(req.cible.find(';'), req.cible.find('?')));
     if (pos != string::npos)
     {
-      req.cible = req.cible.substr(0, pos);
+      req.cible.resize(pos);
+    }
+    pos = min(req.referer.find('#'), min(req.referer.find(';'), req.referer.find('?')));
+    if (pos != string::npos)
+    {
+      req.referer.resize(pos);
     }
     
-        tableauRequetes.push_back(req);
+    tableauRequetes.push_back(req);
   }
 
   Analyse analyse(tableauRequetes);
