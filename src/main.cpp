@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <regex>
 
 #include "../int/Analyse.h"
 #include "../int/Reader.h"
@@ -58,7 +59,21 @@ int main (int argc, char *argv[])
     {
       continue;
     }
-    if (!wantImage && req.cible.find(".html") == string::npos && req.cible.find(".php") == string::npos)
+    string extension;
+    regex pattern_extension("\\.([^\\.]{1,5})$");
+    smatch match;
+    if (!wantImage && regex_search(req.cible, match, pattern_extension))
+    {
+      extension = match[1].str();
+      // liste des extensions trouvées dans anonyme.log
+      // 7z, asm, bmp, clf, css, doc, docx, gif, htlm, htm, html, ic, ico, ics, jpg, js, masm, pdf, php, png, pps, txt, xml, zip
+
+      if (extension == "png" || extension == "jpg" || extension == "gif" || extension == "bmp" || extension == "ico")
+      // images
+      {
+        continue;
+      }
+    }
     {
       continue;
     }
