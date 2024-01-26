@@ -38,6 +38,9 @@ Reader & Reader::GetNextRequest(Requete & req)
     return *this;
   }
 
+  // peut faire regex
+  // std::regex e("(\\d+\\.\\d+\\.\\d+\\.\\d+) (-) (-) \\[(\\d{2}/\\w{3}/\\d{4}):(\\d{2}):(\\d{2}):(\\d{2}) (\\+|-)0(\\d)00] \\\"(\\w+) ([\\w\\d\\./]+) ([^\\\"]+)\\\" (\\d+|-) (\\d+|-) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"");
+
   string ligne;
   std::getline(*this, ligne);      // on récupère la ligne suivante du fichier log
   stringstream flux_string(ligne); // on convertit la ligne en flux
