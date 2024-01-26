@@ -33,7 +33,7 @@ bool Analyse::Generation_dot(string nom_fichier) const
   string fichier;
   ofstream file(nom_fichier, ofstream::out | ofstream::trunc);
   fichier += "digraph {";
-  vector<string> noeud_cree;
+  vector <string> noeud_cree;
   if (!file)
   {
     cerr << "Problème ouverture du fichier" << endl;
@@ -50,19 +50,8 @@ bool Analyse::Generation_dot(string nom_fichier) const
 
   for (unordered_map <string, pair<unordered_map <string, int>, int>>::const_iterator it1 = data.cbegin(); it1 != data.cend(); it1++)
   {
-    if (find(noeud_cree.cbegin(), noeud_cree.cend(), it1->first) != noeud_cree.cend())
-    {
-      fichier += "\""+it1->first + "\";";
-      noeud_cree.push_back(it1->first);
-    }
-
     for (unordered_map <string, int>::const_iterator it2 = it1->second.first.cbegin(); it2 != it1->second.first.cend(); it2++)
     {
-      if (find(noeud_cree.cbegin(), noeud_cree.cend(), it2->first) != noeud_cree.cend())
-      {
-        fichier += it2->first + ";";
-        noeud_cree.push_back(it2->first);
-      }
       fichier += "\""+it2->first + "\"->\"" + it1->first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
     }
   }
