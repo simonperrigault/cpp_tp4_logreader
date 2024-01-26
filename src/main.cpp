@@ -102,10 +102,6 @@ int main (int argc, char *argv[])
     }
     
     tableauRequetes.push_back(req);
-<<<<<<< HEAD
-=======
-
->>>>>>> d35525f (test .dot)
   }
 
   Analyse analyse(tableauRequetes);
