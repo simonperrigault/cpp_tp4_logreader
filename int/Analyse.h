@@ -70,6 +70,11 @@ protected:
 //----------------------------------------------------- Attributs protégés
 
   unordered_map <string, pair<unordered_map <string, int>, int>> data;
+  // grande structure qui représente le graph
+  // la clé est le nom du noeud cible
+  // auquel on lie une paire composée d'une map et d'un entier
+  // la map contient les noeuds referer et le nombre de fois qu'ils vont vers la cible
+  // l'entier représente le nombre total de fois que le noeud cible a été visité (= somme des entiers précédents)
 };
 //-------------------------------- Autres définitions dépendantes de <Analyse>
 #endif // ANALYSE_H

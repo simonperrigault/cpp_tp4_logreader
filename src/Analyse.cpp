@@ -72,16 +72,16 @@ bool Analyse::Generation_dot(string nom_fichier) const
 
 void Analyse::GetTop(unsigned int taille) const
 {
-  vector<pair<int, string>> top;
+  vector<pair<int, string>> top; // vector qu'on va garder trié par ordre croissant du int (= nombre de visites)
   int mini = 0;
   for (unordered_map<string, pair<unordered_map<string, int>, int>>::const_iterator it = data.cbegin(); it != data.cend(); ++it)
   {
-    if (top.size() < taille)
+    if (top.size() < taille) // si on n'a pas atteint la taille max, on ajoute dans tous les cas
     {
       top.push_back(make_pair(it->second.second, it->first));
       mini = min(mini, it->second.second);
     }
-    else
+    else // sinon on ajoute que si le nombre de visites est supérieur au minimum de notre vector
     {
       if (it->second.second > mini)
       {
@@ -92,11 +92,17 @@ void Analyse::GetTop(unsigned int taille) const
       }
     }
   }
+  if (top.size() == 0)
+  {
+    cout << "Aucun top à afficher" << endl;
+    return;
+  }
   sort(top.begin(), top.end());
   cout << "Top " << taille << ":" << endl;
+  // on parcourt à l'envers pour avoir le top dans l'ordre décroissant
   for (vector<pair<int, string>>::const_reverse_iterator it = top.crbegin(); it != top.crend(); ++it)
   {
-    if (it->first == 1)
+    if (it->first == 1) // petite subtilité pour l'affichage avec un s ou pas
     {
       cout << "\t" << it->second << " (" << it->first << " hit)" << endl;
     }
@@ -109,19 +115,31 @@ void Analyse::GetTop(unsigned int taille) const
 
 void Analyse::AddRequete(const Requete &Requete)
 {
-  ++(data[Requete.cible].second); // Incrémente le deuxième élément de la paire associé à la cible
-  // Si aucune paire associée, élément intialisé à zéro puis incrémenté
-  ++data[Requete.cible].first[Requete.referer]; // Incrémente l'élément associé au referer
+  ++(data[Requete.cible].second);
+  // Incrémente le deuxième élément de la paire associé à la cible (= somme des visites)
+  // Si aucune paire associée, élément intialisé à zéro par la unordered_map puis incrémenté
+
+  ++data[Requete.cible].first[Requete.referer];
+  // Incrémente l'élément associé au referer (= nombre de fois que le referer va vers la cible)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-// Analyse &Analyse::operator=(const Analyse &unAnalyse)
-// // Algorithme :
-// //
-// {
-// } //----- Fin de operator =
+
+Analyse &Analyse::operator=(const Analyse &unAnalyse)
+// Algorithme :
+//
+{
+  if (this != &unAnalyse) // regarde si l'adresse de l'objet est différente de l'adresse de l'objet passé en paramètre
+  {
+    data = unAnalyse.data;
+  }
+  return *this;
+} //----- Fin de operator =
+
+
 //-------------------------------------------- Constructeurs - destructeur
-Analyse::Analyse(const Analyse &unAnalyse)
+
+Analyse::Analyse(const Analyse &unAnalyse) : data(unAnalyse.data)
 // Algorithme :
 //
 {
@@ -129,6 +147,7 @@ Analyse::Analyse(const Analyse &unAnalyse)
   cout << "Appel au constructeur de copie de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse (constructeur de copie)
+
 Analyse::Analyse(const vector<Requete> & vecReq) : data()
 // Algorithme :
 //
@@ -141,6 +160,7 @@ Analyse::Analyse(const vector<Requete> & vecReq) : data()
   cout << "Appel au constructeur de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse
+
 Analyse::~Analyse()
 // Algorithme :
 //

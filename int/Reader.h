@@ -12,8 +12,6 @@
 
 #include <string>
 #include <fstream>
-#include <iostream>
-#include <sstream>
 #include "Requete.h"
 
 using namespace std;
@@ -32,16 +30,11 @@ class Reader : public ifstream
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  Reader & GetNextRequest(Requete & req); // méthode qui lit le fichier log et renvoie la requête suivante
-  void PrintFlags() const;
+  Reader & GetNextRequest(Requete & req); // méthode qui lit le fichier log et rentre les informations dans une requête
   //------------------------------------------------- Surcharge d'opérateurs
 
   //-------------------------------------------- Constructeurs - destructeur
-  Reader(const Reader &unReader);
-  // Mode d'emploi (constructeur de copie) :
-  //
-  // Contrat :
-  //
+
   Reader(const string &cheminFichierLog, const string &URL_BASE);
   // Mode d'emploi :
   //

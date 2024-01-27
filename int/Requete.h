@@ -53,6 +53,9 @@ public:
   // Contrat :
   //
 
+  // on met les attributs en public pour pouvoir les utiliser dans le main
+  // la classe agit comme une structure
+  // elle sert à mieux organiser les données recueillies par le reader
   string ip;
   string userLogName;
   string authenticatedUser;

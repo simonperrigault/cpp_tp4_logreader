@@ -10,6 +10,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 //------------------------------------------------------ Include personnel
 #include "../int/Reader.h"
 #include "../int/Requete.h"
@@ -22,14 +23,14 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-Reader & Reader::GetNextRequest(Requete & req)
+Reader &Reader::GetNextRequest(Requete &req)
 {
 
   // peut faire regex
-  // std::regex e("(\\d+\\.\\d+\\.\\d+\\.\\d+) (-) (-) \\[(\\d{2}/\\w{3}/\\d{4}):(\\d{2}):(\\d{2}):(\\d{2}) (\\+|-)0(\\d)00] \\\"(\\w+) ([\\w\\d\\./]+) ([^\\\"]+)\\\" (\\d+|-) (\\d+|-) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"");
+  // regex pattern("(\\d+\\.\\d+\\.\\d+\\.\\d+) (-) (-) \\[(\\d{2}/\\w{3}/\\d{4}):(\\d{2}):(\\d{2}):(\\d{2}) (\\+|-)0(\\d)00] \\\"(\\w+) ([\\w\\d\\./]+) ([^\\\"]+)\\\" (\\d+|-) (\\d+|-) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"");
 
   string ligne;
-  std::getline(*this, ligne);      // on récupère la ligne suivante du fichier log
+  std::getline(*this, ligne); // on récupère la ligne suivante du fichier log
   if (!(*this))
   {
     return *this;
@@ -43,7 +44,7 @@ Reader & Reader::GetNextRequest(Requete & req)
 
   flux_string >> req.ip >> req.userLogName >> req.authenticatedUser;
 
-  flux_string.ignore(2); // on ignore le caractère [
+  flux_string.ignore(2); // on ignore les caractères _[
   std::getline(flux_string, req.date, ':');
 
   std::getline(flux_string, hour_string, ':');
@@ -56,7 +57,7 @@ Reader & Reader::GetNextRequest(Requete & req)
   flux_string.ignore(1); // on ignore _
 
   flux_string >> gmt_signe >> req.gmt; // on récupère le signe et la valeur du gmt
-  req.gmt = req.gmt / 100;                 // formatage du fichier log est avec un gmt de type 0200, on le convertit en 2
+  req.gmt = req.gmt / 100; // formatage du fichier log est avec un gmt de type 0200, on le convertit en 2
   if (gmt_signe == '-')
     req.gmt = -req.gmt;
 
@@ -75,14 +76,14 @@ Reader & Reader::GetNextRequest(Requete & req)
     req.size = stoi(size_string);
   }
 
-  flux_string.ignore(2); // on ignore le caractère _"
+  flux_string.ignore(2); // on ignore les caractères _"
   std::getline(flux_string, req.referer, '"');
   if (req.referer.compare(0, url_base.size(), url_base, 0, url_base.size()) == 0)
   {
     req.referer = req.referer.substr(url_base.size()); // on enlève l'URL de base pour ne garder que le chemin relatif
   }
 
-  flux_string.ignore(2); // on ignore le caractère _"
+  flux_string.ignore(2); // on ignore les caractères _"
   std::getline(flux_string, req.navigator, '"');
 
   return *this;
@@ -91,14 +92,6 @@ Reader & Reader::GetNextRequest(Requete & req)
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Reader::Reader(const Reader &unReader)
-// Algorithme :
-//
-{
-#ifdef MAP
-  cout << "Appel au constructeur de copie de <Reader>" << endl;
-#endif
-} //----- Fin de Reader (constructeur de copie)
 
 Reader::Reader(const string &chemin, const string &p_URL_BASE) : ifstream(chemin), url_base(p_URL_BASE) // notre objet reader est un ifstream
 {

@@ -1,7 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
 #include <regex>
+#include <iostream>
 
 #include "../int/Analyse.h"
 #include "../int/Reader.h"
@@ -76,11 +74,12 @@ int main (int argc, char *argv[])
         continue;
       }
     }
-    if (req.status >= 400) // enlève les erreurs
+    if (req.status >= 400) // enlève les requêtes en erreurs
     {
       continue;
     }
 
+    // on nettoie les cibles et referers si elles sont trop longues
     pos = min(req.cible.find('#'), min(req.cible.find(';'), req.cible.find('?')));
     if (pos != string::npos)
     {
