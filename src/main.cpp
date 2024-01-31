@@ -30,7 +30,15 @@ int main (int argc, char *argv[])
     else if (arg == "-t")
     {
       wantTime = true;
-      time = stoi(argv[i + 1]);
+      try
+      {
+        time = stoi(argv[i + 1]);
+      }
+      catch(const invalid_argument& e)
+      {
+        cerr << "Veuillez entrer un nombre après -t" << endl;
+        return 1;
+      }
     }
     else if (arg == "-g")
     {

@@ -31,7 +31,7 @@ Reader &Reader::GetNextRequest(Requete &req)
 
   string ligne;
   std::getline(*this, ligne); // on récupère la ligne suivante du fichier log
-  if (!(*this))
+  if (!(*this)) // failbit ou badbit
   {
     return *this;
   }
@@ -49,8 +49,17 @@ Reader &Reader::GetNextRequest(Requete &req)
 
   std::getline(flux_string, hour_string, ':');
   std::getline(flux_string, minute_string, ':');
-  req.hour = stoi(hour_string);
-  req.minute = stoi(minute_string);
+  try
+  {
+    req.hour = stoi(hour_string);
+    req.minute = stoi(minute_string);
+  }
+  catch (const invalid_argument &e)
+  {
+    cerr << "Erreur lors de la conversion de l'heure" << endl;
+    this->setstate(ios::failbit);
+    exit(1);
+  }
 
   flux_string >> req.second;
 
@@ -73,7 +82,17 @@ Reader &Reader::GetNextRequest(Requete &req)
   }
   else
   {
-    req.size = stoi(size_string);
+    try
+    {
+      req.size = stoi(size_string);
+    }
+    catch(const invalid_argument& e)
+    {
+      cerr << "Erreur lors de la conversion de la taille" << endl;
+      this->setstate(ios::failbit);
+      exit(1);
+    }
+    
   }
 
   flux_string.ignore(2); // on ignore les caractères _"
