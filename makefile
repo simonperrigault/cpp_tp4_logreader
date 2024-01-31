@@ -2,7 +2,7 @@ ECHO = @echo
 RM = @rm
 COMP = @g++
 EDL = @g++
-CCFLAGS = -Wall -pedantic -ansi -std=c++11 -g -O3 #-DMAP
+CCFLAGS = -Wall -pedantic -ansi -std=c++11 -O3 #-g #-DMAP
 LDFLAGS = 
 LIBS =
 INT = $(wildcard int/*)
