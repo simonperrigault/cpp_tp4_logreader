@@ -98,6 +98,10 @@ int main (int argc, char *argv[])
     {
       req.referer.resize(pos);
     }
+    if (req.cible[req.cible.size()-1] == '/')
+    {
+      req.cible.resize(req.cible.size()-1);
+    }
     
     tableauRequetes.push_back(req);
   }
