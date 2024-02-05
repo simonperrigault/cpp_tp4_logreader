@@ -38,7 +38,7 @@ bool Analyse::Generation_dot(string nom_fichier) const
   {
     cerr << "Problème ouverture du fichier" << endl;
     file.close();
-    return false;
+    exit(1);
   }
 
   if (data.size() == 0)
