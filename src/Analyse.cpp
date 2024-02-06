@@ -36,7 +36,7 @@ bool Analyse::Generation_dot(string nom_fichier) const
   vector <string> noeud_cree;
   if (!file)
   {
-    cerr << "Problème ouverture du fichier" << endl;
+    cerr << "Problème ouverture du fichier dot" << endl;
     file.close();
     exit(1);
   }

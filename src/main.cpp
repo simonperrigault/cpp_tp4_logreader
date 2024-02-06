@@ -51,7 +51,7 @@ int main (int argc, char *argv[])
   Reader reader(filename, URL_BASE);
   if (reader.is_open() == false)
   {
-    cerr << "Erreur lors de l'ouverture du fichier" << endl;
+    cerr << "Erreur lors de l'ouverture du fichier log" << endl;
     return 1;
   }
   vector<Requete> tableauRequetes;

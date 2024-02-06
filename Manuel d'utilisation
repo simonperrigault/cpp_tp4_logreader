@@ -10,7 +10,7 @@ Retourne le top 10 des cibles les plus visitées (ou moins si moins de requêtes
 Gestion des exeptions :
 
 - "Veuillez entrer un nombre après -t" -> erreur de conversion du nombre entré après le [-t]
-- "Erreur lors de l'ouverture du fichier" -> le fichier de log donné ne sait pas ouvert correctement
-- "Problème ouverture du fichier" -> le fichier .dot du graphe n'a pas été correctement créé
+- "Erreur lors de l'ouverture du fichier log" -> le fichier de log donné ne s'est pas ouvert correctement
+- "Problème ouverture du fichier dot" -> le fichier .dot du graphe n'a pas été correctement créé
 - "Erreur lors de la conversion de l'heure" -> erreur de conversion du nombre en sortie du flux lors de la lecture du fichier log
 - "Erreur lors de la conversion de la taille" -> erreur de conversion du nombre en sortie du flux lors de la lecture du fichier log
