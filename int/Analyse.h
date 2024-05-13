@@ -26,7 +26,7 @@ class Analyse
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
-  bool Generation_dot(string nom_fichier) const;
+  bool Generation_dot(const string& nom_fichier) const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
@@ -53,7 +53,7 @@ public:
   //
   // Contrat :
   //
-  Analyse (const vector<Requete> & vecReq);
+  explicit Analyse (const vector<Requete> & vecReq);
   // Mode d'emploi :
   //
   // Contrat :

@@ -49,7 +49,7 @@ int main (int argc, char *argv[])
 
   string filename = argv[argc - 1];
   Reader reader(filename, URL_BASE);
-  if (reader.is_open() == false)
+  if (!reader.is_open())
   {
     cerr << "Erreur lors de l'ouverture du fichier log" << endl;
     return 1;

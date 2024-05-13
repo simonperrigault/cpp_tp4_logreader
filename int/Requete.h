@@ -42,7 +42,7 @@ public:
   //
   // Contrat :
   //
-  Requete(const string & p_ip="", const string & p_userLogName="", const string & p_authenticatedUser="", const string & p_date="", int p_hour=0, int p_minute=0, int p_second=0, int p_gmt=0, const string & p_requestType="", const string & p_target="",const string & p_protocole="", int p_status=0, int p_size=0, const string & p_referer="", const string & p_navigator="");
+  explicit Requete(string  p_ip="", string  p_userLogName="", string  p_authenticatedUser="", string  p_date="", int p_hour=0, int p_minute=0, int p_second=0, int p_gmt=0, string  p_requestType="", string  p_target="",string  p_protocole="", int p_status=0, int p_size=0, string  p_referer="", string  p_navigator="");
   // Mode d'emploi :
   //
   // Contrat :

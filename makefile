@@ -11,6 +11,8 @@ OBJ = $(SRC:src/%.cpp=obj/%.o)
 EXE = logreader.exe
 EFFACE = clean
 
+all : $(EXE)
+
 $(EXE) : $(OBJ)
 	$(ECHO) "EdL de <$(EXE)>"
 	$(COMP) -o $(EXE) $(LDFLAGS) $(OBJ) $(LIBS)

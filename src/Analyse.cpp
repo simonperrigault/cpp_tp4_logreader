@@ -28,7 +28,7 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-bool Analyse::Generation_dot(string nom_fichier) const
+bool Analyse::Generation_dot(const string& nom_fichier) const
 {
   string fichier;
   ofstream file(nom_fichier, ofstream::out | ofstream::trunc);
@@ -41,18 +41,18 @@ bool Analyse::Generation_dot(string nom_fichier) const
     exit(1);
   }
 
-  if (data.size() == 0)
+  if (data.empty())
   {
     cerr << "Aucun graphe créé" << endl;
     file.close();
     return false;
   }
 
-  for (unordered_map <string, pair<unordered_map <string, int>, int>>::const_iterator it1 = data.cbegin(); it1 != data.cend(); it1++)
+  for (const auto & it1 : data)
   {
-    for (unordered_map <string, int>::const_iterator it2 = it1->second.first.cbegin(); it2 != it1->second.first.cend(); it2++)
+    for (auto it2 = it1.second.first.cbegin(); it2 != it1.second.first.cend(); ++it2)
     {
-      fichier += "\""+it2->first + "\"->\"" + it1->first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
+      fichier += "\""+it2->first + "\"->\"" + it1.first + "\" [label=\"" + to_string(it2->second) + "\"" +"];\n";
     }
   }
 
@@ -74,25 +74,25 @@ void Analyse::GetTop(unsigned int taille) const
 {
   vector<pair<int, string>> top; // vector qu'on va garder trié par ordre croissant du int (= nombre de visites)
   int mini = 0;
-  for (unordered_map<string, pair<unordered_map<string, int>, int>>::const_iterator it = data.cbegin(); it != data.cend(); ++it)
+  for (const auto & it : data)
   {
     if (top.size() < taille) // si on n'a pas atteint la taille max, on ajoute dans tous les cas
     {
-      top.push_back(make_pair(it->second.second, it->first));
-      mini = min(mini, it->second.second);
+      top.emplace_back(it.second.second, it.first);
+      mini = min(mini, it.second.second);
     }
     else // sinon on ajoute que si le nombre de visites est supérieur au minimum de notre vector
     {
-      if (it->second.second > mini)
+      if (it.second.second > mini)
       {
-        top.push_back(make_pair(it->second.second, it->first));
+        top.emplace_back(it.second.second, it.first);
         sort(top.begin(), top.end());
         top.erase(top.begin());
         mini = top[0].first;
       }
     }
   }
-  if (top.size() == 0)
+  if (top.empty())
   {
     cout << "Aucun top à afficher" << endl;
     return;
@@ -100,7 +100,7 @@ void Analyse::GetTop(unsigned int taille) const
   sort(top.begin(), top.end());
   cout << "Top " << taille << ":" << endl;
   // on parcourt à l'envers pour avoir le top dans l'ordre décroissant
-  for (vector<pair<int, string>>::const_reverse_iterator it = top.crbegin(); it != top.crend(); ++it)
+  for (auto it = top.crbegin(); it != top.crend(); ++it)
   {
     if (it->first == 1) // petite subtilité pour l'affichage avec un s ou pas
     {
@@ -152,9 +152,9 @@ Analyse::Analyse(const vector<Requete> & vecReq) : data()
 // Algorithme :
 //
 {
-  for (vector<Requete>::const_iterator iterator = vecReq.cbegin(); iterator != vecReq.cend(); iterator++)
+  for (const auto & iterator : vecReq)
   {
-    AddRequete(*iterator);
+    AddRequete(iterator);
   }
 #ifdef MAP
   cout << "Appel au constructeur de <Analyse>" << endl;

@@ -10,6 +10,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <utility>
 
 //------------------------------------------------------ Include personnel
 #include "../int/Requete.h"
@@ -23,24 +24,7 @@ using namespace std;
 //} //----- Fin de Méthode
 //------------------------------------------------- Surcharge d'opérateurs
 Requete& Requete::operator = (const Requete & uneRequete)
-{   
-  ip = uneRequete.ip;
-  userLogName = uneRequete.userLogName;
-  authenticatedUser = uneRequete.authenticatedUser;
-  date = uneRequete.date;
-  hour = uneRequete.hour;
-  minute = uneRequete.minute;
-  second = uneRequete.second;
-  gmt = uneRequete.gmt;
-  requestType = uneRequete.requestType;
-  cible = uneRequete.cible;
-  protocole = uneRequete.protocole;
-  status = uneRequete.status;
-  size = uneRequete.size;
-  referer = uneRequete.referer;
-  navigator = uneRequete.navigator;
-  return *this;
-}
+= default;
 //-------------------------------------------- Constructeurs - destructeur
 Requete::Requete ( const Requete & unRequete )
 // Algorithme :
@@ -52,8 +36,8 @@ Requete::Requete ( const Requete & unRequete )
 #endif
 } //----- Fin de Requete (constructeur de copie)
 
-Requete::Requete(const string & p_ip, const string & p_userLogName, const string & p_authenticatedUser, const string & p_date, int p_hour, int p_minute, int p_second, int p_gmt, const string & p_requestType, const string & p_target, const string & p_protocole, int p_status, int p_size, const string & p_referer, const string & p_navigator)
-  : ip(p_ip), userLogName(p_userLogName), authenticatedUser(p_authenticatedUser), date(p_date), hour(p_hour), minute(p_minute), second(p_second), gmt(p_gmt), requestType(p_requestType), cible(p_target), protocole(p_protocole), status(p_status), size(p_size), referer(p_referer), navigator(p_navigator)
+Requete::Requete(string  p_ip, string  p_userLogName, string  p_authenticatedUser, string  p_date, int p_hour, int p_minute, int p_second, int p_gmt, string  p_requestType, string  p_target, string  p_protocole, int p_status, int p_size, string  p_referer, string  p_navigator)
+  : ip(std::move(p_ip)), userLogName(std::move(p_userLogName)), authenticatedUser(std::move(p_authenticatedUser)), date(std::move(p_date)), hour(p_hour), minute(p_minute), second(p_second), gmt(p_gmt), requestType(std::move(p_requestType)), cible(std::move(p_target)), protocole(std::move(p_protocole)), status(p_status), size(p_size), referer(std::move(p_referer)), navigator(std::move(p_navigator))
 {
 #ifdef MAP 
   cout << "Appel au constructeur de <Requete>" << endl;

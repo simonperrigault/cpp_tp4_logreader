@@ -35,12 +35,12 @@ public:
 
   //-------------------------------------------- Constructeurs - destructeur
 
-  Reader(const string &cheminFichierLog, const string &URL_BASE);
+  Reader(const string &cheminFichierLog, string URL_BASE);
   // Mode d'emploi :
   //
   // Contrat :
   //
-  virtual ~Reader();
+  ~Reader() override;
   // Mode d'emploi :
   //
   // Contrat :

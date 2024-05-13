@@ -11,9 +11,9 @@
 using namespace std;
 #include <iostream>
 #include <sstream>
+#include <utility>
 //------------------------------------------------------ Include personnel
 #include "../int/Reader.h"
-#include "../int/Requete.h"
 //------------------------------------------------------------- Constantes
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -112,7 +112,7 @@ Reader &Reader::GetNextRequest(Requete &req)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Reader::Reader(const string &chemin, const string &p_URL_BASE) : ifstream(chemin), url_base(p_URL_BASE) // notre objet reader est un ifstream
+Reader::Reader(const string &chemin, string p_URL_BASE) : ifstream(chemin), url_base(std::move(p_URL_BASE)) // notre objet reader est un ifstream
 {
 #ifdef MAP
   cout << "Appel au constructeur de <Reader>" << endl;
