@@ -32,3 +32,8 @@
 
 *.dot
 *.png
+
+
+# Clion
+cmake-build-*/
+.idea
